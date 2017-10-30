@@ -24,7 +24,7 @@ Although Qualtrics offers a countdown timer, this timer can only track time spen
 
 We can add a countdown timer that will persist across multiple pages by using some JavaScript code. First, we should add a 'Timing' type question (see Qualtrics' [timing section](https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/) for how to add these) to the block or page the participant will first see after clicking through to begin the experiment. The benefit to using a Timing question type is that the participant never sees the question and including the JavaScript here ensures it is isolted from any other JavaScript you will use.
 
-To add JavaScript, click question, click the gear symbol ("Advanced Question Options") on the left-hand side of the question, then click "Add Javascript..."  This should open an embedded window. You'll want to clear anything in that window and then copy and paste the below into this window:
+To add JavaScript, click question, click the gear symbol ("Advanced Question Options") on the left-hand side of the question, then click "Add Javascript..."  This should open an embedded window. You'll want to clear anything in that window and then copy and paste the below into this window and click Save:
 
 ```js
 Qualtrics.SurveyEngine.addOnload(function()
@@ -70,6 +70,20 @@ function startTimer(duration, display) {
 });
 
 ```
+
+Although there is a lot going on in this script, the most important place for you to look is at the bottom where you'll find the following:
+
+- `var timerSeconds = 5`. This indicates that the timer should countdown from 5 secons until 0 seconds. You can change the number of seconds to your designed number here. The script will convert your number of seconds to a more reasonable countdown in terms of minutes and seconds.
+
+- `document.getElementById("timer_1").innerHTML = ""`. This allows you to place any text you would like at the top of the screen once time has elapsed. You can include the message (e.g. "Your time has run out!") in between the quotation marks. For example: `.innerHTML = "Your time has run out!"`. Note that this message will persist at the top of the study unless turned off or set as blank. Here, I've set the field to be empty - meaning that no message is shown once time has elapsed.
+
+- `Qualtrics.SurveyEngine.setEmbeddedData("blockTimeFlag", "1")`. This tells Qualtrics to assign the embedded data field (EDF) named `blockTimeFlag` a value of 1. More on this later.
+
+- `$('NextButton').click();}`. This results in time running out leading to a click of the Next button. This is what will enable use to advance to the end of the task after time has elapsed.
+
+Each of these features (with the exception of the first) can be removed from the above code - perhaps relevant if you don't want to show a message or don't want to advance the screen once time elapses.
+
+# 
 
 
 
