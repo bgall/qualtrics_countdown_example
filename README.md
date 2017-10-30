@@ -71,7 +71,7 @@ function startTimer(duration, display) {
 
 ```
 
-Although there is a lot going on in this script, the most important place for you to look is at the bottom where you'll find the following:
+Although there is a lot going on in this script, the most important place for you to look is at the bottom. This effectively determines what will happen when time runs out on the countdown and is where you'll find the following:
 
 - `var timerSeconds = 5`. This indicates that the timer should countdown from 5 secons until 0 seconds. You can change the number of seconds to your designed number here. The script will convert your number of seconds to a more reasonable countdown in terms of minutes and seconds.
 
@@ -89,6 +89,8 @@ Once this is done, an orange icon should appear on the left-hand side of the que
 
 # Advancing to another section when time runs out
 
+### Embedded Data 
+
 In our example, we have hundreds of screens for participants to view during the timed experiment and do not expect the participants to advance through all of the screens within the time constraints. However, we don't want to require them to click through all of those screens. Given that we don't know the screen on which the participant will run out of time, we want to implement a solution that advances the participant to a section of the study outside of the timed experiment from any screen in the experiment.
 
 One solution to this is to generate a variable at the very beginning of the study, condition the display of the experiment's screens on that variable having a specific value, and assign that variable the specified value when time runs out. 
@@ -99,7 +101,29 @@ More concretely, we can go into the Survey Flow of the study and click "Add a Ne
 
 You need to make sure the EDF is earlier in your Survey Flow than your experiment. Best practice suggests keeping this EDF at the top of your survey flow.
 
-After saving your survey flow, you'll need to return to the Javascript you previously copied, pasted, and saved.
+After saving your survey flow, you'll need to return to the Javascript you previously copied, pasted, and saved. Instead of `blockTimeflag`, you'll want to enter the name of the field you just created. Once this is done, save. You have now instructed Qualtrics to create a variable with a default value of 0 and change the value to 1 once time has elapsed.
 
-in the first question on the experiment's starting page (the first screen one views after clicking through to begin the experiment).
+### Display Logic
 
+We can now use the fact that the value of 0 of the EDF you just created will change to 1 when time has elapsed to ensure that participants will only see the task's screens so long as that value has not changed. To do this, change the Display Logic for each possible screen in the study to the condition that the EDF field is still 0. To do this, click on the question, then select "Add Display Logic" from the options that appear on the right-hand side of the screen. Enter the name of your EDF use the operator "is equal to" and enter 0 in the value field. This will ensure that the question is only displayed when time has not elapsed.
+
+![Display Logic](/display_logic.PNG?raw=true)
+
+Recall that the JavaScript provided above will click the "Next" button once time has run out. If all of the experiment's questions have this display logic, then when the the "Next" button is clicked, the participant will skip all of the rest of the experiment and appear in a new section of the study as desired.
+
+# What if a participant finishes early?
+
+Once issue that can arise from the above procedure is that if a participant completes the experiment before time has elapsed, Qualtrics will *still* automatically click "Next" on the current screen - even though this might accidentally cause the participant to skip a screen after the experiment and not be able to provide responses for that screen.
+
+Although there are many solutions, one solution is to *not allow the participant to move to the next section of the study until the specified time limit has elapsed*. The appropriateness of this solution will vary depending upon the context of your study.
+
+To implement this, we want to remove the "Next" button from the last screen of the experiment. To do this, it is recommended you create a block/page after your experiment with a Text Description question explaining that the participant has completed the experiment and must wait until the time limit has elapsed. Importantly, this screen should be subject to the display logic found above so as to ensure participants only see this screen if they finish before the time elapses. One can then add the following JavaScript to the question to ensure that the "Next" button is hidden from the question:
+
+``` js
+Qualtrics.SurveyEngine.addOnload(function() {     
+     function hideEl(element) {    
+         element.hide();   
+      }    
+     var nb = $('NextButton');  
+     hideEl.defer(nb);})
+```
