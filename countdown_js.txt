@@ -1,0 +1,41 @@
+Qualtrics.SurveyEngine.addOnload(function()
+{
+    var headerCont = document.createElement("div");  
+ headerCont.className = "header-cont";  
+ headerCont.id = "header_container";  
+ var header = document.createElement("div");  
+ header.className = "header"  
+ header.id = "header_1";  
+ var timer = document.createElement("div");  
+ timer.className = "timer";  
+ timer.id = "timer_1";  
+ timer.innerHTML = "Time Remaining: <span id='time'>00:10</span>";  
+ headerCont.appendChild(header);  
+ header.appendChild(timer);  
+ document.body.insertBefore(headerCont, document.body.firstChild);
+function startTimer(duration, display) {  
+  var timer = duration, minutes, seconds;  
+  var myTimer = setInterval(function() {  
+   minutes = parseInt(timer / 60, 10)  
+   seconds = parseInt(timer % 60, 10);  
+   minutes = minutes < 10 ? "0" + minutes : minutes;  
+   seconds = seconds < 10 ? "0" + seconds : seconds;  
+   var text = ('innerText' in display)? 'innerText' : 'textContent';
+   display[text] = minutes + ":" + seconds;  
+   if (--timer < 0) {  
+    clearInterval(myTimer);  
+    timeOver();  
+   }  
+  }, 1000);  
+ }  
+	
+ var timerSeconds = 5,  
+ display = document.querySelector('#time');  
+ startTimer(timerSeconds, display);  
+ var timeOver = function() {  
+	 
+     document.getElementById("timer_1").innerHTML = "";
+     Qualtrics.SurveyEngine.setEmbeddedData("blockTimeFlag", "1");    
+     $('NextButton').click();}
+
+});
