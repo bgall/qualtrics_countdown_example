@@ -93,10 +93,13 @@ In our example, we have hundreds of screens for participants to view during the 
 
 One solution to this is to generate a variable at the very beginning of the study, condition the display of the experiment's screens on that variable having a specific value, and assign that variable the specified value when time runs out. 
 
-More concretely, we can go into the Survey Flow
+More concretely, we can go into the Survey Flow of the study and click "Add a New Element Here" then "Embedded Data" to add an Embedded Data Field to the Survey Flow. In the left-hand box, enter a field name that you like: this will be the name of the variable that will determine whether your other questions will appear. You then need to assign this field a value by clicking 'Set Value' in that box and entering a value of 0. 
 
 ![Embedded Data](/embedded_trigger.PNG?raw=true)
 
+You need to make sure the EDF is earlier in your Survey Flow than your experiment. Best practice suggests keeping this EDF at the top of your survey flow.
+
+After saving your survey flow, you'll need to return to the Javascript you previously copied, pasted, and saved.
 
 in the first question on the experiment's starting page (the first screen one views after clicking through to begin the experiment).
 
