@@ -75,7 +75,7 @@ function startTimer(duration, display) {
 
 Although there is a lot going on in this script, the most important place for you to look is at the bottom. This effectively determines what will happen when time runs out on the countdown and is where you'll find the following:
 
-- `var timerSeconds = 5`. This indicates that the timer should countdown from 5 secons until 0 seconds. You can change the number of seconds to your designed number here. The script will convert your number of seconds to a more reasonable countdown in terms of minutes and seconds.
+- `var timerSeconds = 5`. This indicates that the timer should countdown from 5 seconds until 0 seconds. You can change the number of seconds to your designed number here. The script will convert your number of seconds to a more reasonable countdown in terms of minutes and seconds.
 
 - `document.getElementById("timer_1").innerHTML = ""`. This allows you to place any text you would like at the top of the screen once time has elapsed. You can include the message (e.g. "Your time has run out!") in between the quotation marks. For example: `.innerHTML = "Your time has run out!"`. Note that this message will persist at the top of the study unless turned off or set as blank. Here, I've set the field to be empty - meaning that no message is shown once time has elapsed.
 
