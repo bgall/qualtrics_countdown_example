@@ -24,7 +24,7 @@ Although Qualtrics offers a countdown timer, this timer can only track time spen
 
 We can add a countdown timer that will persist across multiple pages by using some JavaScript code. First, we should add a 'Timing' type question to the block or page the participant will first see after clicking through to begin the experiment.
 
-![Alt text](/.jpg?raw=true "Optional Title")
+![Alt text](/javascript_added.PNG?raw=true "Optional Title")
 
 
 
