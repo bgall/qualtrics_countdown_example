@@ -6,6 +6,8 @@ Specifically, this example explains how to (a) implement a timer that persists a
 
 The example is applicable in nearly all uses cases: any situations where a single question or multiple questions are contained in a single page or multiple pages within a single question block or multiple question blocks. Although here we will assume that the task can be represented in a survey-based response (as is typically the case in choice-based tasks in the social sciences), presumably this can be extended to other cases.
 
+This example was informed by the work of [Andrew Long](https://thebehaviorallab.wordpress.com/2016/05/13/custom-timers-and-times-up-notifications-in-qualtrics/) and [T. Gibbons](https://stackoverflow.com/users/4434072/t-gibbons), in particular [this post](https://stackoverflow.com/questions/45703003/qualtrics-progress-to-next-block-when-time-is-up).
+
 ## The Demonstration-Case
 
 For demonstration purposes, we'll focus on a concrete example. In this example, study participants have a limited amount of time (5 minutes) to decode as many codes as they can. After clicking a button to begin the experiment, participants will complete an experiment/task across multiple screens. 
