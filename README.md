@@ -22,9 +22,11 @@ You'll first want to create all of your survey questions. In this exampe, we're 
 
 Although Qualtrics offers a countdown timer, this timer can only track time spent on a single page. This is problematic when a study requires the participant to view multiple pages and possibly even multiple blocks of pages. 
 
-We can add a countdown timer that will persist across multiple pages by using some JavaScript code. First, we should add a 'Timing' type question (see Qualtrics' [timing section](https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/) for how to add these)to the block or page the participant will first see after clicking through to begin the experiment. The benefit to using a 
+We can add a countdown timer that will persist across multiple pages by using some JavaScript code. First, we should add a 'Timing' type question (see Qualtrics' [timing section](https://www.qualtrics.com/support/survey-platform/survey-module/editing-questions/question-types-guide/advanced/timing/) for how to add these) to the block or page the participant will first see after clicking through to begin the experiment. The benefit to using a Timing question type is that the participant never sees the question and including the JavaScript here ensures it is isolted from any other JavaScript you will use.
 
-![Alt text](/javascript_added.PNG?raw=true "Optional Title")
+Below shows 
+
+![Alt text](/javascript_added.PNG?raw=true)
 
 
 
