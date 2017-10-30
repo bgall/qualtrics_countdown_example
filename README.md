@@ -8,13 +8,25 @@ The example is applicable in nearly all uses cases: any situations where a singl
 
 ## The Demonstration-Case
 
-For demonstration purposes, we'll focus on a concrete example. In this example, study participants have a limited amount of time (5 minutes) to decode as many codes as they can. On each screen, they are provided with some codes and table that provide the crosswalk between coded values and decoded values. They can enter the decoded values on the same screen and can move forwards or backwards between screens throughout the time limit. At the end of the time limit, they will be forwarded to a post-experiment screen. We will assume that each screen is a different block of values/crosswalks/answer spaces - although this is not necessarily - and that the researcher does not want the participant to advance beyond last page of questions prior to the end of the time window.[er]
+For demonstration purposes, we'll focus on a concrete example. In this example, study participants have a limited amount of time (5 minutes) to decode as many codes as they can. After clicking a button to begin the experiment, participants will complete an experiment/task across multiple screens. 
 
-Once participants click through to the start of the experiments, we want to ensure that the participants can track the amount of time remaining on the task. In such cases, providing a clear countdown timer at the top of the screen is useful. Additionally, we wanted to randomize the words the participants viewed and limit the number of 
+On each screen, they are provided with some codes and table that provide the crosswalk between coded values and decoded values. They can enter the decoded values on the same screen and can move forwards or backwards between screens throughout the time limit. At the end of the time limit, they will be forwarded to a post-experiment screen. We will assume that each screen is a different block of values/crosswalks/answer spaces - although this is not necessary - and that the researcher does not want the participant to advance beyond last page of questions prior to the end of the time window.
 
-we have many blocks of survey questions or choice-tasks that comprise a single study. The questions within each block can be located on a single page or multiple pages. For simplicity, we'll assume you have a single page of questions within each of many blocks.
+Once participants click through to the start of the experiments, we want to ensure that the participants can track the amount of time remaining on the task. In such cases, providing a clear countdown timer at the top of the screen is useful. 
 
 # Setting up your survey
 
-You'll first want to create all of your survey questions. 
+You'll first want to create all of your survey questions. In this exampe, we're assuming that we have many blocks with a single page containing whatever number of questions of whatever type we want. 
+
+# Adding a counterdown timer
+
+Although Qualtrics offers a countdown timer, this timer can only track time spent on a single page. This is problematic when a study requires the participant to view multiple pages and possibly even multiple blocks of pages. 
+
+We can add a countdown timer that will persist across multiple pages by using some JavaScript code. First, we should add a 'Timing' type question to the block or page the participant will first see after clicking through to begin the experiment.
+
+![Alt text](/.jpg?raw=true "Optional Title")
+
+
+
+in the first question on the experiment's starting page (the first screen one views after clicking through to begin the experiment).
 
