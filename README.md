@@ -83,15 +83,19 @@ Although there is a lot going on in this script, the most important place for yo
 
 Each of these features (with the exception of the first) can be removed from the above code - perhaps relevant if you don't want to show a message or don't want to advance the screen once time elapses.
 
-# 
+Once this is done, an orange icon should appear on the left-hand side of the question, indicating it contains JavaScript:
 
+![JS Added](/javascript_added.PNG?raw=true)
 
+# Advancing to another section when time runs out
 
+In our example, we have hundreds of screens for participants to view during the timed experiment and do not expect the participants to advance through all of the screens within the time constraints. However, we don't want to require them to click through all of those screens. Given that we don't know the screen on which the participant will run out of time, we want to implement a solution that advances the participant to a section of the study outside of the timed experiment from any screen in the experiment.
 
-Below shows an example of a timing question at the start of the first block of questions in the study. The 
+One solution to this is to generate a variable at the very beginning of the study, condition the display of the experiment's screens on that variable having a specific value, and assign that variable the specified value when time runs out. 
 
-![Alt text](/javascript_added.PNG?raw=true)
+More concretely, we can go into the Survey Flow
 
+![Embedded Data](/embedded_trigger.PNG?raw=true)
 
 
 in the first question on the experiment's starting page (the first screen one views after clicking through to begin the experiment).
